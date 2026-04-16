@@ -9,6 +9,6 @@ public:
             dp[i+1] = min(dp[i+1], dp[i] + cost[i]);
             dp[i+2] = min(dp[i+2], dp[i] + cost[i]);
         }
-        return min(dp[n], dp[n+1]);
+        return dp[n];
     }
 };
