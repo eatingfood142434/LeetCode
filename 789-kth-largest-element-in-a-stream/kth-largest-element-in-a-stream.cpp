@@ -6,20 +6,14 @@ private:
 public:
     KthLargest(int k, vector<int>& nums) : k(k) {
         for (const int& n : nums) {
-            if (pq.size() < k) pq.push(n);
-            else if (n > pq.top()) {
-                pq.pop();
-                pq.push(n);
-            }
+            pq.push(n);
+            if (pq.size() > k) pq.pop();
         }
     }
     
     int add(int val) {
-        if (pq.size() < k) pq.push(val);
-        else if (val > pq.top()) {
-            pq.pop();
-            pq.push(val);
-        }
+        pq.push(val);
+        if (pq.size() > k) pq.pop();
         return pq.top();
     }
 };
